@@ -23,6 +23,11 @@ const Router = props => {
           component={DestinationSearchScreen}
           options={{title: '목적지를 정하세요'}}
         />
+        <Stack.Screen
+          name="Guests"
+          component={GuestsScreen}
+          options={{title: '인원 수'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

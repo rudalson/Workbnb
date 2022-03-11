@@ -1,10 +1,14 @@
 import React from 'react';
 import {View, Text, ImageBackground, Pressable} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+
 import Fontisto from 'react-native-vector-icons/Fontisto';
 
 import styles from './styles';
 
 const HomeScreen = props => {
+  const navigation = useNavigation();
+
   return (
     <View>
       <Pressable
@@ -15,7 +19,7 @@ const HomeScreen = props => {
           styles.searchButton,
         ]}
         onPress={() => {
-          console.warn('hello');
+          navigation.navigate('Destination Search');
         }}>
         {({pressed}) => (
           <>
