@@ -93,7 +93,10 @@ const GuestsScreen = props => {
             borderRadius: 10,
           }}
           onPress={() => {
-            console.warn('검색 결과가 나올거에요');
+            navigation.navigate('Home', {
+              screen: 'Explore',
+              params: {screen: 'SearchResults'},
+            });
           }}>
           {({pressed}) => (
             <Text style={{fontSize: 20, color: 'white', fontWeight: 'bold'}}>

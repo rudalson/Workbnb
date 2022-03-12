@@ -1,4 +1,8 @@
-## npx init
+# Workbnb
+
+에어비앤비 클론에서 변형하여 오피스 공유 플랫폼 앱 형태 구현
+
+- React-native 0.67.3
 
 ## run
 
@@ -7,7 +11,7 @@ yarn android // or
 yarn ios
 ```
 
-## react navigation 6.x
+## React navigation 6.x
 
 ```
 yarn add @react-navigation/native @react-navigation/native-stack @react-navigation/bottom-tabs
@@ -20,4 +24,8 @@ yarn add react-native-reanimated react-native-gesture-handler react-native-scree
 
 ```
 npx pod-install ios
+```
+
+```
+yarn add @react-navigation/material-top-tabs react-native-tab-view
 ```

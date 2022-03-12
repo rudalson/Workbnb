@@ -7,6 +7,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Feather from 'react-native-vector-icons/Feather';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
+import ExploreNavigator from './ExploreNavigator';
 import HomeScreen from '../screens/Home';
 import GuestsScreen from '../screens/Guests';
 
@@ -22,7 +23,7 @@ const HomeTabNavigator = props => {
       }}>
       <Tab.Screen
         name="Explore"
-        component={HomeScreen}
+        component={ExploreNavigator}
         options={{
           tabBarIcon: ({color}) => (
             <Fontisto name="search" size={25} color={color} />
@@ -38,7 +39,7 @@ const HomeTabNavigator = props => {
           ),
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Workbnb"
         component={HomeScreen}
         options={{
@@ -64,7 +65,7 @@ const HomeTabNavigator = props => {
             <EvilIcons name="user" size={25} color={color} />
           ),
         }}
-      />
+      /> */}
     </Tab.Navigator>
   );
 };
