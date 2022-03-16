@@ -27,5 +27,5 @@ npx pod-install ios
 ```
 
 ```
-yarn add @react-navigation/material-top-tabs react-native-tab-view
+yarn add @react-navigation/material-top-tabs react-native-tab-view react-native-pager-view
 ```
