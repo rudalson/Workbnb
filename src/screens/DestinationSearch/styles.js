@@ -2,7 +2,9 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    margin: 20,
+    padding: 20,
+    height: '100%',
+    backgroundColor: 'white',
   },
   textInput: {
     fontSize: 20,
@@ -11,7 +13,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 15,
+    marginVertical: 10,
     borderBottomWidth: 1,
     borderColor: 'lightgray',
   },
