@@ -4,7 +4,7 @@ import {useNavigation} from '@react-navigation/native';
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 
 import styles from './styles';
-import searchResults from '../../../assets/data/search';
+import keys from '../../../assets/data/keys';
 import SuggestionRow from './SuggestionRow';
 
 const DestinationSearchScreen = props => {
@@ -22,7 +22,7 @@ const DestinationSearchScreen = props => {
         fetchDetails
         style={{textInput: styles.textInput}}
         query={{
-          key: '',
+          key: keys.googlePlacesApi,
           language: 'en',
           types: '(cities)',
         }}
