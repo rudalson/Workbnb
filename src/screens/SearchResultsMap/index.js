@@ -18,8 +18,18 @@ const SearchResultsMap = props => {
           coordinate={{
             latitude: 37.50922,
             longitude: 127.04869,
-          }}
-        />
+          }}>
+          <View
+            style={{
+              backgroundColor: 'white',
+              padding: 5,
+              borderRadius: 20,
+              borderColor: 'grey',
+              borderWidth: 1,
+            }}>
+            <Text style={{fontWeight: 'bold'}}>₩300</Text>
+          </View>
+        </Marker>
       </MapView>
     </View>
   );
