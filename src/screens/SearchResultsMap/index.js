@@ -1,8 +1,12 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+
+import CustomMarker from '../../components/CustomMarker';
+import places from '../../../assets/data/feed';
 
 const SearchResultsMap = props => {
+  const [selectedPlaceId, setSelectedPlaceId] = React.useState(null);
   return (
     <View>
       <MapView
@@ -14,22 +18,14 @@ const SearchResultsMap = props => {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}>
-        <Marker
-          coordinate={{
-            latitude: 37.50922,
-            longitude: 127.04869,
-          }}>
-          <View
-            style={{
-              backgroundColor: 'white',
-              padding: 5,
-              borderRadius: 20,
-              borderColor: 'grey',
-              borderWidth: 1,
-            }}>
-            <Text style={{fontWeight: 'bold'}}>₩300</Text>
-          </View>
-        </Marker>
+        {places.map(place => (
+          <CustomMarker
+            coordinate={place.coordinate}
+            price={place.newPrice}
+            isSelected={place.id === selectedPlaceId}
+            onPress={() => setSelectedPlaceId(place.id)}
+          />
+        ))}
       </MapView>
     </View>
   );
