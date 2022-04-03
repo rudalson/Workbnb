@@ -11,6 +11,7 @@ import ExploreNavigator from './ExploreNavigator';
 import HomeScreen from '../screens/Home';
 import GuestsScreen from '../screens/Guests';
 import SearchResultsMap from '../screens/SearchResultsMap';
+import PostScreen from '../screens/PostScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,8 +25,8 @@ const HomeTabNavigator = props => {
       }}>
       <Tab.Screen
         name="Explore"
-        component={SearchResultsMap}
-        // component={ExploreNavigator}
+        component={ExploreNavigator}
+        // component={PostScreen}
         options={{
           tabBarIcon: ({color}) => (
             <Fontisto name="search" size={25} color={color} />
@@ -41,7 +42,7 @@ const HomeTabNavigator = props => {
           ),
         }}
       />
-      {/* <Tab.Screen
+      <Tab.Screen
         name="Workbnb"
         component={HomeScreen}
         options={{
@@ -67,7 +68,7 @@ const HomeTabNavigator = props => {
             <EvilIcons name="user" size={25} color={color} />
           ),
         }}
-      /> */}
+      />
     </Tab.Navigator>
   );
 };

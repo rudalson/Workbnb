@@ -4,6 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import DestinationSearchScreen from '../screens/DestinationSearch';
 import GuestsScreen from '../screens/Guests';
+import PostScreen from '../screens/PostScreen';
 
 import HomeTabNavigator from './HomeTabNavigator';
 
@@ -27,6 +28,11 @@ const Router = props => {
           name="Guests"
           component={GuestsScreen}
           options={{title: '인원 수'}}
+        />
+        <Stack.Screen
+          name="Post"
+          component={PostScreen}
+          options={{title: 'Accomodation'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
