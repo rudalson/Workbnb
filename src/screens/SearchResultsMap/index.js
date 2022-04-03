@@ -17,6 +17,7 @@ const SearchResultsMap = props => {
       setSelectedPlaceId(selectedPlace.id);
     }
   });
+  const map = React.useRef();
 
   const width = useWindowDimensions().width;
 
@@ -26,11 +27,21 @@ const SearchResultsMap = props => {
     }
     const index = places.findIndex(place => place.id === selectedPlaceId);
     flatlist.current.scrollToIndex({index});
+
+    const selectedPlace = places[index];
+    const region = {
+      latitude: selectedPlace.coordinate.latitude,
+      longitude: selectedPlace.coordinate.longitude,
+      latitudeDelta: 0.05,
+      longitudeDelta: 0.05,
+    };
+    map.current.animateToRegion(region);
   }, [selectedPlaceId]);
 
   return (
     <View>
       <MapView
+        ref={map}
         style={{width: '100%', height: '100%'}}
         // provider={PROVIDER_GOOGLE}
         initialRegion={{
