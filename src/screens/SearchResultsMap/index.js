@@ -8,7 +8,25 @@ import PostCarouselItem from '../../components/PostCarouselItem';
 
 const SearchResultsMap = props => {
   const [selectedPlaceId, setSelectedPlaceId] = React.useState(null);
+
+  const flatlist = React.useRef();
+  const viewConfig = React.useRef({itemVisiblePercentThreshold: 70});
+  const onViewChanged = React.useRef(({viewableItems}) => {
+    if (viewableItems.length > 0) {
+      const selectedPlace = viewableItems[0].item;
+      setSelectedPlaceId(selectedPlace.id);
+    }
+  });
+
   const width = useWindowDimensions().width;
+
+  React.useEffect(() => {
+    if (!selectedPlaceId || !flatlist) {
+      return;
+    }
+    const index = places.findIndex(place => place.id === selectedPlaceId);
+    flatlist.current.scrollToIndex({index});
+  }, [selectedPlaceId]);
 
   return (
     <View>
@@ -33,6 +51,7 @@ const SearchResultsMap = props => {
 
       <View style={{position: 'absolute', bottom: 10}}>
         <FlatList
+          ref={flatlist}
           data={places}
           renderItem={({item}) => <PostCarouselItem post={item} />}
           horizontal
@@ -40,6 +59,8 @@ const SearchResultsMap = props => {
           snapToInterval={width - 60}
           snapToAlignment={'center'}
           decelerationRate={'fast'}
+          viewabilityConfig={viewConfig.current}
+          onViewableItemsChanged={onViewChanged.current}
         />
       </View>
     </View>
