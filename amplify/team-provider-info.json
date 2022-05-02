@@ -10,6 +10,11 @@
       "StackName": "amplify-workbnb-dev-225302",
       "StackId": "arn:aws:cloudformation:ap-northeast-2:818753535945:stack/amplify-workbnb-dev-225302/0a19bea0-bfe8-11ec-9651-063be831e622",
       "AmplifyAppId": "dvhhcuduy3au7"
+    },
+    "categories": {
+      "auth": {
+        "workbnb314db7ef": {}
+      }
     }
   }
 }

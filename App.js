@@ -15,6 +15,8 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Router from './src/navigation/Router';
 import HomeScreen from './src/screens/Home';
 
+import {withAuthenticator} from 'aws-amplify-react-native';
+
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -30,4 +32,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withAuthenticator(App);
