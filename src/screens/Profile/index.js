@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {View, Pressable, Text} from 'react-native';
 import {Auth} from 'aws-amplify';
