@@ -206,7 +206,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "oldprice",
+          "name" : "oldPrice",
           "description" : null,
           "args" : [ ],
           "type" : {
@@ -458,7 +458,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "oldprice",
+          "name" : "oldPrice",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -1338,7 +1338,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "oldprice",
+          "name" : "oldPrice",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -1458,7 +1458,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "oldprice",
+          "name" : "oldPrice",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -1614,7 +1614,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "oldprice",
+          "name" : "oldPrice",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",

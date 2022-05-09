@@ -12,7 +12,7 @@ export const getPost = /* GraphQL */ `
       bed
       bedroom
       maxGuests
-      oldprice
+      oldPrice
       newPrice
       latitude
       longitude
@@ -37,7 +37,7 @@ export const listPosts = /* GraphQL */ `
         bed
         bedroom
         maxGuests
-        oldprice
+        oldPrice
         newPrice
         latitude
         longitude

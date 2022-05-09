@@ -15,7 +15,7 @@ export const createPost = /* GraphQL */ `
       bed
       bedroom
       maxGuests
-      oldprice
+      oldPrice
       newPrice
       latitude
       longitude
@@ -38,7 +38,7 @@ export const updatePost = /* GraphQL */ `
       bed
       bedroom
       maxGuests
-      oldprice
+      oldPrice
       newPrice
       latitude
       longitude
@@ -61,7 +61,7 @@ export const deletePost = /* GraphQL */ `
       bed
       bedroom
       maxGuests
-      oldprice
+      oldPrice
       newPrice
       latitude
       longitude

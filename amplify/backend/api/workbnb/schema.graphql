@@ -14,7 +14,7 @@ type Post @model {
   bedroom: Int!
   maxGuests: Int!
 
-  oldprice: Float
+  oldPrice: Float
   newPrice: Float!
 
   latitude: Float!
