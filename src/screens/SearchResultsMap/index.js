@@ -1,13 +1,15 @@
 import React from 'react';
 import {View, FlatList, useWindowDimensions} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import {API, graphqlOperation} from 'aws-amplify';
 
+import {listPosts} from '../../graphql/queries';
 import CustomMarker from '../../components/CustomMarker';
-import places from '../../../assets/data/feed';
 import PostCarouselItem from '../../components/PostCarouselItem';
 
 const SearchResultsMap = props => {
   const [selectedPlaceId, setSelectedPlaceId] = React.useState(null);
+  const [posts, setPosts] = React.useState([]);
 
   const flatlist = React.useRef();
   const viewConfig = React.useRef({itemVisiblePercentThreshold: 70});
@@ -22,16 +24,31 @@ const SearchResultsMap = props => {
   const width = useWindowDimensions().width;
 
   React.useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const postResult = await API.graphql(graphqlOperation(listPosts));
+
+        setPosts(postResult.data?.listPosts.items);
+        console.log('count = ', postResult.data?.listPosts.items.length);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  React.useEffect(() => {
     if (!selectedPlaceId || !flatlist) {
       return;
     }
-    const index = places.findIndex(place => place.id === selectedPlaceId);
+    const index = posts.findIndex(place => place.id === selectedPlaceId);
     flatlist.current.scrollToIndex({index});
 
-    const selectedPlace = places[index];
+    const selectedPlace = posts[index];
     const region = {
-      latitude: selectedPlace.coordinate.latitude,
-      longitude: selectedPlace.coordinate.longitude,
+      latitude: selectedPlace.latitude,
+      longitude: selectedPlace.longitude,
       latitudeDelta: 0.05,
       longitudeDelta: 0.05,
     };
@@ -50,9 +67,9 @@ const SearchResultsMap = props => {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}>
-        {places.map(place => (
+        {posts.map(place => (
           <CustomMarker
-            coordinate={place.coordinate}
+            coordinate={{latitude: place.latitude, longitude: place.longitude}}
             price={place.newPrice}
             isSelected={place.id === selectedPlaceId}
             onPress={() => setSelectedPlaceId(place.id)}
@@ -63,7 +80,7 @@ const SearchResultsMap = props => {
       <View style={{position: 'absolute', bottom: 10}}>
         <FlatList
           ref={flatlist}
-          data={places}
+          data={posts}
           renderItem={({item}) => <PostCarouselItem post={item} />}
           horizontal
           showsHorizontalScrollIndicator={false}

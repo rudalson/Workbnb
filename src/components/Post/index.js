@@ -5,6 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 
 const Post = props => {
   const post = props.post;
+  console.log(props);
   const navigation = useNavigation();
 
   const goToPostPage = () => {
