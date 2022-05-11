@@ -7,14 +7,24 @@ import Post from '../../components/Post';
 
 const SearchResultsScreen = props => {
   const [posts, setPosts] = React.useState([]);
+  const {guests} = props;
+
+  console.log({props});
 
   React.useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const postResult = await API.graphql(graphqlOperation(listPosts));
+        const postResult = await API.graphql(
+          graphqlOperation(listPosts, {
+            filter: {
+              maxGuests: {
+                ge: guests,
+              },
+            },
+          }),
+        );
 
         setPosts(postResult.data?.listPosts.items);
-        console.log('count = ', postResult.data?.listPosts.items.length);
       } catch (error) {
         console.log(error);
       }

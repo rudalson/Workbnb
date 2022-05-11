@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {View, Text, Pressable} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
@@ -95,7 +96,10 @@ const GuestsScreen = props => {
           onPress={() => {
             navigation.navigate('Home', {
               screen: 'Explore',
-              params: {screen: 'SearchResults'},
+              params: {
+                screen: 'SearchResults',
+                params: {guests: adults + children},
+              },
             });
           }}>
           {({pressed}) => (

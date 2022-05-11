@@ -8,6 +8,8 @@ import CustomMarker from '../../components/CustomMarker';
 import PostCarouselItem from '../../components/PostCarouselItem';
 
 const SearchResultsMap = props => {
+  const {guests} = props;
+
   const [selectedPlaceId, setSelectedPlaceId] = React.useState(null);
   const [posts, setPosts] = React.useState([]);
 
@@ -26,10 +28,17 @@ const SearchResultsMap = props => {
   React.useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const postResult = await API.graphql(graphqlOperation(listPosts));
+        const postResult = await API.graphql(
+          graphqlOperation(listPosts, {
+            filter: {
+              maxGuests: {
+                ge: guests,
+              },
+            },
+          }),
+        );
 
         setPosts(postResult.data?.listPosts.items);
-        console.log('count = ', postResult.data?.listPosts.items.length);
       } catch (error) {
         console.log(error);
       }
