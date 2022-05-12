@@ -1,17 +1,14 @@
 import React from 'react';
 import {View, FlatList, useWindowDimensions} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
-import {API, graphqlOperation} from 'aws-amplify';
 
-import {listPosts} from '../../graphql/queries';
 import CustomMarker from '../../components/CustomMarker';
 import PostCarouselItem from '../../components/PostCarouselItem';
 
 const SearchResultsMap = props => {
-  const {guests} = props;
+  const {posts} = props;
 
   const [selectedPlaceId, setSelectedPlaceId] = React.useState(null);
-  const [posts, setPosts] = React.useState([]);
 
   const flatlist = React.useRef();
   const viewConfig = React.useRef({itemVisiblePercentThreshold: 70});
@@ -24,28 +21,6 @@ const SearchResultsMap = props => {
   const map = React.useRef();
 
   const width = useWindowDimensions().width;
-
-  React.useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const postResult = await API.graphql(
-          graphqlOperation(listPosts, {
-            filter: {
-              maxGuests: {
-                ge: guests,
-              },
-            },
-          }),
-        );
-
-        setPosts(postResult.data?.listPosts.items);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchPosts();
-  }, []);
 
   React.useEffect(() => {
     if (!selectedPlaceId || !flatlist) {

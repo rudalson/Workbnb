@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {View, Text, Pressable} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 import styles from './styles';
 
@@ -11,6 +11,7 @@ const GuestsScreen = props => {
   const [infants, setInfants] = React.useState(0);
 
   const navigation = useNavigation();
+  const route = useRoute();
 
   return (
     <View style={{justifyContent: 'space-between', height: '100%'}}>
@@ -98,7 +99,10 @@ const GuestsScreen = props => {
               screen: 'Explore',
               params: {
                 screen: 'SearchResults',
-                params: {guests: adults + children},
+                params: {
+                  guests: adults + children,
+                  viewport: route.params.viewport,
+                },
               },
             });
           }}>
